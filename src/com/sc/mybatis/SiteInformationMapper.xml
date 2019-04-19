@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.mapper.SiteInformationMapper" > 
+<!-- Result Map-->
+<resultMap id="BaseResultMap" type="com.sc.bean.SiteInformation" >
+	<result column="id" property="id"/>
+	<result column="name" property="name"/>
+	<result column="city" property="city"/>
+	<result column="mobile" property="mobile"/>
+	<result column="email" property="email"/>
+	<result column="know" property="know"/>
+	<result column="inform" property="inform" />
+	<result column="state" property="state"/>
+	<result column="create_time" property="createTime"/>
+	<result column="update_time" property="updateTime"/>
+</resultMap>
+       
+<!-- TbcClassify table all fields -->
+<sql id="Base_Column_List" >
+	id, name, city, mobile, email, know, inform, state, create_time, update_time
+</sql>
+     
+<!-- 查询条件 -->
+<sql id="Example_Where_Clause">
+where  1=1
+<trim  suffixOverrides="," >
+	<if test="name != null and name != ''" >
+	    and name like CONCAT('%', #{name}, '%')
+	</if>
+	<if test="state != null" >
+	    and state = #{state}
+	</if>
+</trim>
+</sql>
+
+<!-- 逻辑修改，将state 改成 1 -->
+<update id="update" parameterType="Object">
+	update site_information set state = 1 where id = #{id}
+</update>
+
+<!-- 逻辑修改，将state 改成 2 -->
+<update id="updateAudit" parameterType="Object">
+	update site_information set state = 2 where id = #{id}
+</update>
+ 
+<!-- 查询所有站点类型 -->
+<select id="queryByAll"  resultMap="BaseResultMap" parameterType="Object">
+	select <include refid="Base_Column_List" /> from site_information
+</select>
+
+
+
+</mapper>   
