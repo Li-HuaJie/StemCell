@@ -20,16 +20,6 @@ import com.sc.utils.json.JSONUtil;
  */
 public class HtmlUtil {
 	
-	/**
-	 * 
-	 * <br>
-	 * <b>功能：</b>输出json格式<br>
-	 * <b>作者：</b>罗泽军<br>
-	 * <b>日期：</b> Dec 14, 2011 <br>
-	 * @param response
-	 * @param jsonStr
-	 * @throws Exception
-	 */
 	public static void writerJson(HttpServletResponse response,String jsonStr) {
 			writer(response,jsonStr);
 	}
