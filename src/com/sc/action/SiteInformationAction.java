@@ -1,5 +1,7 @@
 package com.sc.action;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sc.bean.SiteInformation;
 import com.sc.model.SiteInformationModel;
 import com.sc.service.SiteInformationService;
+import com.sc.utils.HtmlUtil;
 
 @Controller
 @RequestMapping("/siteInformation")
@@ -25,6 +28,16 @@ public class SiteInformationAction extends BaseAction {
 	public ModelAndView list(SiteInformationModel model,HttpServletRequest request) throws Exception{
 		Map<String,Object>  context = getRootMap();
 		return forword("siteMain/siteInformation",context); 
+	}
+	
+	@RequestMapping("/dataList")
+	public void datalist(SiteInformationModel model,HttpServletResponse response) throws Exception{
+		List<SiteInformation> dataList = siteInService.queryByList(model);
+		//设置页面数据
+		Map<String,Object> jsonMap = new HashMap<String,Object>();
+		jsonMap.put("total", model.getPager().getRowCount());
+		jsonMap.put("rows", dataList);
+		HtmlUtil.writerJson(response, jsonMap);
 	}
 	
 	/**

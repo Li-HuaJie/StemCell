@@ -13,7 +13,7 @@ public class SiteInformation extends BaseBean {
 	private String inform;//
 	private Integer state;//0为未读，1解决，2审核
 	private Timestamp create_time;//创建时间
-	private Timestamp updateTime;//修改时间
+	private Timestamp update_time;//修改时间
 	
 	
 	public Integer getId() {
@@ -80,10 +80,10 @@ public class SiteInformation extends BaseBean {
 	}
 	
 	public Timestamp getUpdateTime() {
-		return updateTime;
+		return update_time;
 	}
 	public void setUpdateTime(Timestamp updateTime) {
-		this.updateTime = updateTime;
+		this.update_time = updateTime;
 	}
 	
 }

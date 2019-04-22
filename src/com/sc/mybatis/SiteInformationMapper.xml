@@ -13,8 +13,8 @@
 	<result column="know" property="know"/>
 	<result column="inform" property="inform" />
 	<result column="state" property="state"/>
-	<result column="create_time" property="createTime"/>
-	<result column="update_time" property="updateTime"/>
+	<result column="create_time" property="create_time"/>
+	<result column="update_time" property="update_time"/>
 </resultMap>
        
 <!-- TbcClassify table all fields -->
@@ -34,6 +34,26 @@ where  1=1
 	</if>
 </trim>
 </sql>
+
+<!-- 分类 列表总数-->
+<select id="queryByCount" resultType="java.lang.Integer"  parameterType="Object">
+	select count(1) from site_information
+	<include refid="Example_Where_Clause"/>
+</select>
+
+<!-- 查询站点分类列表 -->
+<select id="queryByList" resultMap="BaseResultMap"  parameterType="Object">
+	select 
+	<include refid="Base_Column_List"/>
+	from site_information 
+	<include refid="Example_Where_Clause"/>
+	<if test="pager.orderCondition != null and pager.orderCondition != ''" >
+      ${pager.orderCondition}
+    </if>
+    <if test="pager.mysqlQueryCondition != null and pager.mysqlQueryCondition != ''" >
+       ${pager.mysqlQueryCondition}
+    </if>
+</select>
 
 <!-- 逻辑修改，将state 改成 1 -->
 <update id="update" parameterType="Object">
