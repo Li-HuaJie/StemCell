@@ -170,7 +170,7 @@ insert  into `sys_user`(`id`,`email`,`pwd`,`nickName`,`state`,`loginCount`,`logi
 
 -- 信息请求table
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `information`;
+DROP TABLE IF EXISTS `site_information`;
 CREATE TABLE `information` (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL COMMENT '姓名',
@@ -189,7 +189,7 @@ insert into `information` (`id`,`name`,`city`,`mobile`,`email`,`know`,`inform`,`
 
 -- 合作table
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `cooperation`;
+DROP TABLE IF EXISTS `site_cooperation`;
 CREATE TABLE `cooperation` (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL COMMENT '姓名',
@@ -203,7 +203,7 @@ CREATE TABLE `cooperation` (
 
 -- 专家table
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `experts`;
+DROP TABLE IF EXISTS `site_experts`;
 CREATE TABLE `experts` (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) COMMENT '姓名',
@@ -216,7 +216,7 @@ CREATE TABLE `experts` (
 
 -- 新闻评论
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS `news`;
+DROP TABLE IF EXISTS `site_news`;
 CREATE TABLE `news` (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) COMMENT '杂志名称',
@@ -230,7 +230,7 @@ CREATE TABLE `news` (
 
 -- 视频评论
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS `video`;
+DROP TABLE IF EXISTS `site_video`;
 CREATE TABLE `video`(
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) COMMENT '名称',
@@ -243,7 +243,7 @@ CREATE TABLE `video`(
 
 -- 证书
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS `certificate`;
+DROP TABLE IF EXISTS `site_certificate`;
 CREATE TABLE `certificate` (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) COMMENT '认证名称',
