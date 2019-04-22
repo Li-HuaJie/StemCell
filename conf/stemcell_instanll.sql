@@ -168,6 +168,92 @@ CREATE TABLE `sys_user` (
 
 insert  into `sys_user`(`id`,`email`,`pwd`,`nickName`,`state`,`loginCount`,`loginTime`,`deleted`,`createTime`,`updateTime`,`createBy`,`updateBy`,`superAdmin`) values (1,'admin@qq.com','C33367701511B4F6020EC61DED352059','超级大Boss',0,121,'2013-01-14 11:34:23',0,'2012-12-23 23:01:15','2013-01-14 11:34:23',NULL,NULL,1),(3,'362217990@qq.com','E10ADC3949BA59ABBE56E057F20F883E','vowo',0,1,'2013-01-07 12:53:29',0,'2012-12-23 23:17:39','2013-01-13 03:33:41',NULL,NULL,0),(5,'wolf@qq.com','E10ADC3949BA59ABBE56E057F20F883E','大灰狼',0,69,'2013-01-14 14:32:12',0,'2013-01-07 12:30:10','2013-01-14 14:32:12',NULL,NULL,0),(6,'youke@qq.com',NULL,' 游客',0,NULL,NULL,0,'2013-01-13 03:41:32','2013-01-13 03:41:32',NULL,NULL,0);
 
+-- 信息请求table
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `information`;
+CREATE TABLE `information` (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) NOT NULL COMMENT '姓名',
+	city VARCHAR(32) COMMENT '城市',
+	mobile VARCHAR(32) COMMENT '电话',
+	email VARCHAR(32) NOT NULL COMMENT '电子邮箱',
+	know VARCHAR(32) COMMENT '如何认识',
+	inform VARCHAR(32) COMMENT '了解信息',
+	state INT(11) COMMENT '0未读,1解决,2审核',
+	create_time DATETIME COMMENT '反馈时间',
+	update_time DATETIME COMMENT '修改时间',
+	PRIMARY KEY (id)
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+insert into `information` (`id`,`name`,`city`,`mobile`,`email`,`know`,`inform`,`state`,`create_time`,`update_time`) values (1,'测试','厦门','18860043300','123456@qq.com','因特网','干细胞',0,NOW(),NOW()),(2,'测试2','厦门','18860043300','123456@qq.com','医生','肿瘤科',1,NOW(),NOW()),(3,'测试3','厦门','18860043300','123456@qq.com','课程','产前检查',2,NOW(),NOW());
+
+-- 合作table
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `cooperation`;
+CREATE TABLE `cooperation` (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) NOT NULL COMMENT '姓名',
+	email VARCHAR(32) NOT NULL COMMENT '电子邮箱',
+	mobile VARCHAR(32) COMMENT '电话',
+	descrizione VARCHAR(255) COMMENT '个人描述',
+	resume VARCHAR(255) COMMENT '简历文件',
+	create_time DATETIME COMMENT '提交时间',
+	PRIMARY KEY(id)
+) ENGINE = INNODB DEFAULT CHARSET=utf8;
+
+-- 专家table
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `experts`;
+CREATE TABLE `experts` (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) COMMENT '姓名',
+	presentation VARCHAR(255) COMMENT '简介',
+	status SMALLINT DEFAULT '1' COMMENT '状态 默认1启动',
+	photo VARCHAR(255) COMMENT '照片',
+	create_time DATETIME,
+	PRIMARY KEY(id)
+) ENGINE = INNODB DEFAULT CHARSET=utf8;
+
+-- 新闻评论
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) COMMENT '杂志名称',
+	title VARCHAR(32) COMMENT '标题',
+	category VARCHAR(32) COMMENT '文章类别',
+	status SMALLINT DEFAULT '1' COMMENT '状态 默认1启动',
+	file VARCHAR(255) COMMENT '文章文件',
+	create_time DATETIME COMMENT '创建时间',
+	PRIMARY KEY(id)
+) ENGINE = INNODB DEFAULT CHARSET=utf8;
+
+-- 视频评论
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `video`;
+CREATE TABLE `video`(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) COMMENT '名称',
+	presentation VARCHAR(32) COMMENT '简介',
+	status SMALLINT DEFAULT '1' COMMENT '状态 默认1启用',
+	video VARCHAR(255) COMMENT '视频',
+	create_time DATETIME COMMENT '上传时间',
+	PRIMARY KEY(id)
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+-- 证书
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `certificate`;
+CREATE TABLE `certificate` (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) COMMENT '认证名称',
+	region VARCHAR(32) COMMENT '认证地区',
+	status SMALLINT DEFAULT '1' COMMENT '状态 默认1启用',
+	file VARCHAR(255) COMMENT '证书文件',
+	create_time DATETIME,
+	PRIMARY KEY(id)
+)ENGINE = INNODB DEFAULT CHARSET=utf8;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
