@@ -185,7 +185,7 @@ CREATE TABLE `information` (
 	PRIMARY KEY (id)
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
-insert into `information` (`id`,`name`,`city`,`mobile`,`email`,`know`,`inform`,`state`,`create_time`,`update_time`) values (1,'测试','厦门','18860043300','123456@qq.com','因特网','干细胞',0,NOW(),NOW()),(2,'测试2','厦门','18860043300','123456@qq.com','医生','肿瘤科',1,NOW(),NOW()),(3,'测试3','厦门','18860043300','123456@qq.com','课程','产前检查',2,NOW(),NOW());
+insert into `site_information` (`id`,`name`,`city`,`mobile`,`email`,`know`,`inform`,`state`,`create_time`,`update_time`) values (1,'测试','厦门','18860043300','123456@qq.com','因特网','干细胞',0,NOW(),NOW()),(2,'测试2','厦门','18860043300','123456@qq.com','医生','肿瘤科',1,NOW(),NOW()),(3,'测试3','厦门','18860043300','123456@qq.com','课程','产前检查',2,NOW(),NOW());
 
 -- 合作table
 SET FOREIGN_KEY_CHECKS = 0;
